@@ -1,2 +1,3 @@
 # wufan94.github.io
-my website
+Thank you for visit my site!
+This site is belong to Wu Fan!
