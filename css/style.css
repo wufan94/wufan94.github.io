@@ -231,13 +231,18 @@ body {
 }
 
 .profile-image {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1;
     border-radius: 8px;
     overflow: hidden;
     position: relative;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
     z-index: 2;
+}
+
+/* 第二个设计师的照片样式 */
+.profile-section:nth-child(2) .profile-image {
+    width: 72%;
 }
 
 .profile-image img {
