@@ -1,10 +1,10 @@
 .project-detail-container {
     display: grid;
     grid-template-columns: 400px 1fr;
-    gap: 3rem;
+    gap: 4rem;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 8rem 6rem 4rem;
     min-height: calc(100vh - 200px);
 }
 
@@ -22,7 +22,7 @@
 }
 
 .project-content {
-    padding: 0 2rem;
+    padding-right: 2rem;
 }
 
 .project-header {
@@ -86,10 +86,17 @@
     font-family: 'Noto Sans SC', sans-serif;
 }
 
+@media (max-width: 1400px) {
+    .project-detail-container {
+        padding: 8rem 4rem 4rem;
+    }
+}
+
 @media (max-width: 1200px) {
     .project-detail-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+        padding: 8rem 3rem 3rem;
     }
 
     .project-image-section {
@@ -100,13 +107,13 @@
     }
 
     .project-content {
-        padding: 0;
+        padding-right: 0;
     }
 }
 
 @media (max-width: 768px) {
     .project-detail-container {
-        padding: 1rem;
+        padding: 7rem 2rem 2rem;
     }
 
     .tech-features {

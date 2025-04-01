@@ -98,14 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 加载个人照片
-    const profileImage = document.querySelector('.profile-image');
-    const img = profileImage.querySelector('img');
-    
-    if (img.complete) {
-        profileImage.classList.add('loaded');
-    } else {
-        img.onload = () => profileImage.classList.add('loaded');
-    }
+    document.querySelectorAll('.profile-image').forEach(profileImage => {
+        const img = profileImage.querySelector('img');
+        if (img) {
+            if (img.complete) {
+                profileImage.classList.add('loaded');
+            } else {
+                img.onload = () => profileImage.classList.add('loaded');
+            }
+        }
+    });
 
     // 加载项目
     loadProjects();
