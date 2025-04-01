@@ -3,41 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>吴凡的个人主页 | WU FAN's Portfolio</title>
+    <title>ERGONOVA</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">吴凡 | WU FAN</div>
+        <div class="nav-brand">ERGONOVA</div>
         <ul class="nav-links">
-            <li><a href="#home">首页 | Home</a></li>
-            <li><a href="#about">关于 | About</a></li>
-            <li><a href="#skills">技能 | Skills</a></li>
-            <li><a href="#contact">联系 | Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
         <div class="logo-container">
-            <img src="images/logo.png" alt="Logo" class="logo">
+            <img src="images/logo.png" alt="ERGONOVA Logo" class="logo">
         </div>
-        <div class="hero-content">
-            <h1>吴凡 | WU FAN</h1>
-            <p>工业设计研究者 | Industrial Design Researcher</p>
-            <p>湖南大学设计艺术学院 | School of Design, Hunan University</p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <!-- 项目卡片将通过JavaScript动态加载 -->
         </div>
     </section>
 
     <section id="about" class="about">
         <div class="about-container">
-            <div class="profile-image">
-                <img src="images/profile.jpg" alt="吴凡的照片">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="images/profile.jpg" alt="吴凡的照片">
+                </div>
             </div>
             <div class="about-content">
                 <h2>关于我 | About Me</h2>
                 <div class="about-text">
+                    <h3>吴凡 | WU FAN</h3>
+                    <p>工业设计研究者 | Industrial Design Researcher</p>
+                    <p>湖南大学设计艺术学院 | School of Design, Hunan University</p>
+                    
                     <h3>研究方向 | Research Focus</h3>
                     <ul>
                         <li>人因工程及数据应用 | Human Factors Engineering and Data Applications</li>
@@ -45,50 +53,40 @@
                         <li>可持续设计 | Sustainable Design</li>
                         <li>有形交互 | Tangible Interaction</li>
                     </ul>
+
+                    <h3>专业技能 | Professional Skills</h3>
+                    <ul>
+                        <li>3D打印技术 | 3D Printing
+                            <p>熟练掌握SLS、FDM、SLA等各类型3D打印设备及结构设计</p>
+                        </li>
+                        <li>编程能力 | Programming
+                            <p>C语言, JS, Matlab, Java Script, Python</p>
+                        </li>
+                        <li>设计软件 | Design Software
+                            <p>Adobe Series, Rhino, Grasshopper, Fusion 360, Keyshot, Figma, Touch Designer, Cinema4D</p>
+                        </li>
+                        <li>其他技能 | Other Skills
+                            <ul>
+                                <li>三维扫描技术 | 3D Scanning</li>
+                                <li>统计分析 | Statistical Analysis (SPSS, OriginLab)</li>
+                                <li>人工智能应用 | AI Applications</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>个人兴趣 | Personal Interests</h3>
+                    <ul>
+                        <li>绘画 | Drawing (水彩、中国画、数码板绘)</li>
+                        <li>电子电路设计编程 | Electronic Circuit Design & Programming</li>
+                        <li>视频拍摄及剪辑 | Video Shooting & Editing</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills">
-        <h2>专业技能 | Professional Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>3D打印技术 | 3D Printing</h3>
-                <p>熟练掌握SLS、FDM、SLA等各类型3D打印设备及结构设计</p>
-            </div>
-            <div class="skill-category">
-                <h3>编程能力 | Programming</h3>
-                <p>C语言, JS, Matlab, Java Script, Python</p>
-            </div>
-            <div class="skill-category">
-                <h3>设计软件 | Design Software</h3>
-                <p>Adobe Series, Rhino, Grasshopper, Fusion 360, Keyshot, Figma, Touch Designer, Cinema4D</p>
-            </div>
-            <div class="skill-category">
-                <h3>其他技能 | Other Skills</h3>
-                <ul>
-                    <li>三维扫描技术 | 3D Scanning</li>
-                    <li>统计分析 | Statistical Analysis (SPSS, OriginLab)</li>
-                    <li>人工智能应用 | AI Applications</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="interests" class="interests">
-        <h2>个人兴趣 | Personal Interests</h2>
-        <div class="interests-content">
-            <ul>
-                <li>绘画 | Drawing (水彩、中国画、数码板绘)</li>
-                <li>电子电路设计编程 | Electronic Circuit Design & Programming</li>
-                <li>视频拍摄及剪辑 | Video Shooting & Editing</li>
-            </ul>
-        </div>
-    </section>
-
     <section id="contact" class="contact">
-        <h2>联系方式 | Contact</h2>
+        <h2>Contact</h2>
         <div class="contact-content">
             <div class="contact-info">
                 <p><i class="fas fa-envelope"></i> Email: wufan0621@hnu.edu.cn</p>
@@ -98,7 +96,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 吴凡 | WU FAN. All rights reserved.</p>
+        <p>&copy; 2024 ERGONOVA. All rights reserved.</p>
     </footer>
 
     <script src="js/main.js"></script>

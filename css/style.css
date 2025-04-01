@@ -6,11 +6,11 @@
 }
 
 :root {
-    --primary-color: #007bff;
+    --primary-color: #ffffff;
     --text-color: #e0e0e0;
-    --bg-color: #0a0b1a;
-    --card-bg: #141428;
-    --hover-color: #2196f3;
+    --bg-color: #000000;
+    --card-bg: #0a0a0a;
+    --hover-color: #333333;
 }
 
 body {
@@ -25,12 +25,12 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(10, 11, 26, 0.95);
+    background: rgba(0, 0, 0, 0.95);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
     z-index: 1000;
     backdrop-filter: blur(10px);
 }
@@ -39,6 +39,8 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .nav-links {
@@ -54,13 +56,16 @@ body {
     text-decoration: none;
     color: var(--text-color);
     transition: color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
 }
 
-/* 英雄区域样式 */
+/* 首页样式 */
 .hero {
     height: 100vh;
     position: relative;
@@ -68,9 +73,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    color: var(--text-color);
-    padding-top: 60px;
 }
 
 .hero-overlay {
@@ -84,12 +86,9 @@ body {
 }
 
 .logo-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 16.66vw; /* 1/6的视窗宽度 */
-    z-index: 1;
+    position: relative;
+    width: 16.66vw;
+    z-index: 2;
 }
 
 .logo {
@@ -98,59 +97,90 @@ body {
     opacity: 0.9;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    margin-top: 20vh;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-}
-
-/* 内容区域通用样式 */
-section {
+/* 项目展示样式 */
+.projects {
     padding: 5rem 2rem;
+    background: var(--bg-color);
 }
 
-section h2 {
+.projects h2 {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* 关于我部分样式 */
-.about {
-    background: var(--bg-color);
-    position: relative;
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 8px;
     overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card-content {
+    padding: 1.5rem;
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.project-card p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* 关于我页面样式 */
+.about {
+    min-height: 100vh;
+    background: var(--bg-color);
+    padding-top: 80px;
 }
 
 .about-container {
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-    padding-top: 200px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.profile-section {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
 }
 
 .profile-image {
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .profile-image img {
@@ -162,8 +192,8 @@ section h2 {
 .about-content {
     background: var(--card-bg);
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 .about-text ul {
@@ -285,24 +315,18 @@ footer {
         display: none;
     }
     
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    section {
-        padding: 3rem 1rem;
-    }
-
     .logo-container {
         width: 50vw;
     }
-
-    .profile-image {
-        width: 150px;
-        height: 150px;
+    
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-section {
+        position: relative;
+        top: 0;
+        max-width: 300px;
+        margin: 0 auto;
     }
 } 

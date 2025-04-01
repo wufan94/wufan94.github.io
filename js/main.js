@@ -11,27 +11,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // 滚动效果
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    const profileImage = document.querySelector('.profile-image');
-    const aboutContent = document.querySelector('.about-content');
     
     // 导航栏效果
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 11, 26, 0.95)';
+        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
         navbar.style.backdropFilter = 'blur(10px)';
     } else {
-        navbar.style.background = 'rgba(10, 11, 26, 0.7)';
+        navbar.style.background = 'rgba(0, 0, 0, 0.7)';
         navbar.style.backdropFilter = 'blur(5px)';
     }
     
-    // 个人照片悬浮效果
-    if (profileImage) {
-        const scrolled = window.scrollY;
-        const rate = Math.min(scrolled * 0.1, 100);
-        profileImage.style.transform = `translateX(-50%) translateY(${rate}px)`;
-    }
-    
     // 内容渐入效果
-    const elements = document.querySelectorAll('.skill-category, .interests-content, .contact-content');
+    const elements = document.querySelectorAll('.project-card, .about-content');
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
@@ -45,7 +36,7 @@ window.addEventListener('scroll', () => {
 
 // 初始化动画
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.skill-category, .interests-content, .contact-content');
+    const elements = document.querySelectorAll('.project-card, .about-content');
     elements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
@@ -53,40 +44,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// 项目数据
+// 示例项目数据
 const projects = [
     {
-        title: '项目一',
+        title: 'Project 1',
         description: '项目描述...',
         image: 'images/project1.jpg',
-        link: '#'
+        category: 'Design'
     },
     {
-        title: '项目二',
+        title: 'Project 2',
         description: '项目描述...',
         image: 'images/project2.jpg',
-        link: '#'
+        category: 'Research'
     },
-    // 添加更多项目...
+    {
+        title: 'Project 3',
+        description: '项目描述...',
+        image: 'images/project3.jpg',
+        category: 'Development'
+    }
 ];
 
-// 动态加载项目
+// 加载项目
 function loadProjects() {
     const projectGrid = document.querySelector('.project-grid');
+    if (!projectGrid) return;
+
     projects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
         projectCard.innerHTML = `
             <img src="${project.image}" alt="${project.title}">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <a href="${project.link}" class="project-link">查看详情</a>
+            <div class="project-card-content">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <span class="project-category">${project.category}</span>
+            </div>
         `;
         projectGrid.appendChild(projectCard);
     });
 }
 
 // 页面加载完成后执行
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     loadProjects();
 }); 
