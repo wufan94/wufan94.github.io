@@ -4,6 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingOverlay = document.querySelector('.loading-overlay');
     loadingOverlay.classList.add('hidden');
 
+    // 视频加载和播放控制
+    const video = document.querySelector('.background-video');
+    if (video) {
+        // 设置视频源
+        video.src = 'images/background.mp4';
+        
+        // 确保视频加载完成后播放
+        video.addEventListener('canplay', () => {
+            video.play().catch(error => {
+                console.log('Video autoplay failed:', error);
+                // 如果自动播放失败，添加一个点击事件来手动播放
+                document.addEventListener('click', () => {
+                    video.play();
+                }, { once: true });
+            });
+        });
+
+        // 如果视频已经加载完成，直接尝试播放
+        if (video.readyState >= 3) {
+            video.play().catch(error => {
+                console.log('Video autoplay failed:', error);
+            });
+        }
+    }
+
     // 加载个人照片
     const profileImage = document.querySelector('.profile-image');
     const img = profileImage.querySelector('img');
