@@ -4,27 +4,105 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingOverlay = document.querySelector('.loading-overlay');
     loadingOverlay.classList.add('hidden');
 
+    // 初始化粒子动画
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: '#ffffff'
+            },
+            shape: {
+                type: 'circle'
+            },
+            opacity: {
+                value: 0.5,
+                random: true,
+                animation: {
+                    enable: true,
+                    speed: 1,
+                    opacity_min: 0.1,
+                    sync: false
+                }
+            },
+            size: {
+                value: 3,
+                random: true,
+                animation: {
+                    enable: true,
+                    speed: 2,
+                    size_min: 0.1,
+                    sync: false
+                }
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#ffffff',
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: true,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 1
+                    }
+                },
+                push: {
+                    particles_nb: 4
+                }
+            }
+        },
+        retina_detect: true
+    });
+
     // 视频加载和播放控制
     const video = document.querySelector('.background-video');
     if (video) {
-        // 设置视频源
-        video.src = 'images/background.mp4';
+        // 强制加载视频
+        video.load();
         
-        // 确保视频加载完成后播放
-        video.addEventListener('canplay', () => {
-            video.play().catch(error => {
+        // 尝试播放
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                console.log('Video started playing');
+            }).catch(error => {
                 console.log('Video autoplay failed:', error);
                 // 如果自动播放失败，添加一个点击事件来手动播放
                 document.addEventListener('click', () => {
                     video.play();
                 }, { once: true });
-            });
-        });
-
-        // 如果视频已经加载完成，直接尝试播放
-        if (video.readyState >= 3) {
-            video.play().catch(error => {
-                console.log('Video autoplay failed:', error);
             });
         }
     }
