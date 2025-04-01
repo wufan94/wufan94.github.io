@@ -1,0 +1,105 @@
+.project-detail {
+    max-width: 1200px;
+    margin: 80px auto 40px;
+    padding: 0 20px;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-header h1 {
+    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.chinese-name {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+    margin-left: 15px;
+    font-size: 2rem;
+}
+
+.project-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color-secondary);
+    font-weight: 300;
+}
+
+.project-section {
+    margin-bottom: 60px;
+}
+
+.project-section h2 {
+    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+.project-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color-secondary);
+    margin-bottom: 20px;
+}
+
+.tech-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.feature h3 {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.feature p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .project-header h1 {
+        font-size: 2rem;
+    }
+
+    .chinese-name {
+        font-size: 1.6rem;
+        display: block;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .project-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .feature {
+        padding: 20px;
+    }
+} 

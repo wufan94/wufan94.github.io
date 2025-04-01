@@ -154,55 +154,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// 示例项目数据
+// 项目数据
 const projects = [
     {
-        title: 'High-Precision 3D Foot Scanning',
-        description: 'An innovative system utilizing advanced 3D scanning technology to create precise digital models of feet. This solution combines multiple sensors and AI algorithms to capture detailed foot measurements, enabling perfect fit customization for footwear design and medical applications.',
-        image: 'images/project1.webp',
-        category: 'Technology'
+        title: "Smart Manufacturing Platform",
+        description: "Revolutionizing industrial processes through IoT and AI integration",
+        category: "Industrial Innovation",
+        image: "project1.jpg",
+        link: "project-1.html"
     },
     {
-        title: '3D Printed Footwear Design',
-        description: 'Revolutionary footwear design project leveraging 3D printing technology to create customized, ergonomic shoes. The process integrates personalized foot scan data with parametric design algorithms to produce comfortable, stylish, and perfectly fitted footwear.',
-        image: 'images/project2.webp',
-        category: 'Design'
+        title: "Healthcare Innovation Hub",
+        description: "Advanced medical solutions powered by cutting-edge technology",
+        category: "Healthcare",
+        image: "project2.jpg",
+        link: "project-2.html"
     },
     {
-        title: 'AR Glasses Design',
-        description: 'Cutting-edge augmented reality glasses design that seamlessly blends technology with fashion. Features include an ultra-lightweight frame, advanced optical system, and intuitive user interface, creating an immersive AR experience while maintaining aesthetic appeal.',
-        image: 'images/project3.webp',
-        category: 'Innovation'
+        title: "Sustainable Design Initiative",
+        description: "Eco-friendly innovation for a better future",
+        category: "Sustainability",
+        image: "project3.jpg",
+        link: "project-3.html"
     }
 ];
 
-// 加载项目
+// 加载项目卡片
 function loadProjects() {
     const projectGrid = document.querySelector('.project-grid');
     if (!projectGrid) return;
 
-    projectGrid.innerHTML = ''; // 清空现有内容
-
     projects.forEach(project => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project-card';
-        projectCard.innerHTML = `
-            <img src="${project.image}" alt="${project.title}">
-            <div class="project-card-content">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <span class="project-category">${project.category}</span>
-            </div>
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        
+        card.innerHTML = `
+            <a href="${project.link}" style="text-decoration: none; color: inherit;">
+                <img src="images/${project.image}" alt="${project.title}">
+                <div class="project-card-content">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <span class="project-category">${project.category}</span>
+                </div>
+            </a>
         `;
-        projectGrid.appendChild(projectCard);
+        
+        projectGrid.appendChild(card);
+        
+        // 添加延迟以创建动画效果
+        setTimeout(() => {
+            card.classList.add('visible');
+        }, 100);
     });
-
-    // 添加渐入动画
-    setTimeout(() => {
-        document.querySelectorAll('.project-card').forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('visible');
-            }, index * 200);
-        });
-    }, 100);
 }
