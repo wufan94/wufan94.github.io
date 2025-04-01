@@ -127,7 +127,7 @@ const projects = [
     {
         title: '3D Printed Footwear Design',
         description: 'Revolutionary footwear design project leveraging 3D printing technology to create customized, ergonomic shoes. The process integrates personalized foot scan data with parametric design algorithms to produce comfortable, stylish, and perfectly fitted footwear.',
-        image: 'images/project2.jpg',
+        image: 'images/project2.png',
         category: 'Design'
     },
     {
