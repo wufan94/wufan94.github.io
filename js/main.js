@@ -1,3 +1,39 @@
+// 图片加载处理
+function handleImageLoading() {
+    const loadingOverlay = document.querySelector('.loading-overlay');
+    const heroOverlay = document.querySelector('.hero-overlay');
+    const profileImage = document.querySelector('.profile-image');
+    const imagesToLoad = [
+        { url: 'images/background.gif', element: heroOverlay },
+        { url: 'images/profile.png', element: profileImage }
+    ];
+
+    let loadedImages = 0;
+
+    function preloadImage(imageData) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = imageData.url;
+            img.onload = () => {
+                imageData.element.classList.add('loaded');
+                loadedImages++;
+                if (loadedImages === imagesToLoad.length) {
+                    loadingOverlay.classList.add('hidden');
+                }
+                resolve();
+            };
+            img.onerror = reject;
+        });
+    }
+
+    // 预加载所有图片
+    Promise.all(imagesToLoad.map(preloadImage))
+        .catch(error => {
+            console.error('Error loading images:', error);
+            loadingOverlay.classList.add('hidden');
+        });
+}
+
 // 平滑滚动
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -34,8 +70,10 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// 初始化动画
+// 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', () => {
+    handleImageLoading();
+    
     const elements = document.querySelectorAll('.project-card, .about-content');
     elements.forEach(element => {
         element.style.opacity = '0';

@@ -9,8 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- 预加载关键图片 -->
+    <link rel="preload" as="image" href="images/background.gif">
+    <link rel="preload" as="image" href="images/logo.png">
+    <link rel="preload" as="image" href="images/profile.png">
 </head>
 <body>
+    <!-- 添加加载指示器 -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+    
     <nav class="navbar">
         <div class="nav-brand">ERGONOVA</div>
         <ul class="nav-links">

@@ -90,8 +90,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../images/background.gif') center/cover no-repeat;
+    background: var(--bg-color);
     z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.hero-overlay.loaded {
+    background: url('../images/background.gif') center/cover no-repeat;
 }
 
 .logo-container {
@@ -178,7 +183,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 400px 1fr;
     gap: 3rem;
     padding: 2rem;
 }
@@ -187,6 +192,7 @@ body {
     position: sticky;
     top: 100px;
     height: fit-content;
+    width: 400px;
 }
 
 .profile-image {
@@ -196,6 +202,7 @@ body {
     overflow: hidden;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     background-color: var(--card-bg);
+    position: relative;
 }
 
 .profile-image img {
@@ -209,6 +216,23 @@ body {
 
 .profile-image img:hover {
     filter: grayscale(0%);
+}
+
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--card-bg);
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image.loaded::before {
+    opacity: 0;
 }
 
 .about-content {
@@ -393,4 +417,53 @@ footer p {
         max-width: 300px;
         margin: 0 auto;
     }
+}
+
+@media (max-width: 992px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .profile-section {
+        position: relative;
+        top: 0;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* 加载指示器样式 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--card-bg);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 } 
