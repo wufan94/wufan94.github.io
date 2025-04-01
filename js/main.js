@@ -8,16 +8,49 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 导航栏滚动效果
-window.addEventListener('scroll', function() {
+// 滚动效果
+window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    const profileImage = document.querySelector('.profile-image');
+    const aboutContent = document.querySelector('.about-content');
+    
+    // 导航栏效果
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+        navbar.style.background = 'rgba(10, 11, 26, 0.95)';
+        navbar.style.backdropFilter = 'blur(10px)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.8)';
-        navbar.style.boxShadow = 'none';
+        navbar.style.background = 'rgba(10, 11, 26, 0.7)';
+        navbar.style.backdropFilter = 'blur(5px)';
     }
+    
+    // 个人照片悬浮效果
+    if (profileImage) {
+        const scrolled = window.scrollY;
+        const rate = Math.min(scrolled * 0.1, 100);
+        profileImage.style.transform = `translateX(-50%) translateY(${rate}px)`;
+    }
+    
+    // 内容渐入效果
+    const elements = document.querySelectorAll('.skill-category, .interests-content, .contact-content');
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight * 0.8) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+});
+
+// 初始化动画
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.skill-category, .interests-content, .contact-content');
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
 });
 
 // 项目数据
