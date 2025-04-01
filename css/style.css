@@ -158,9 +158,8 @@ body {
 
 .project-card {
     background: var(--card-bg);
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
@@ -175,38 +174,36 @@ body {
     transform: translateY(-5px);
 }
 
-.project-card img {
+.project-image {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+    border-radius: 8px 8px 0 0;
 }
 
 .project-card-content {
     padding: 1.5rem;
 }
 
-.project-card-content h3 {
-    color: var(--text-color);
+.project-card h3 {
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
+    color: var(--text-primary);
 }
 
-.project-card-content p {
-    color: var(--text-color-secondary);
-    font-size: 0.9rem;
-    line-height: 1.6;
+.project-card p {
+    color: var(--text-secondary);
     margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 .project-category {
     display: inline-block;
-    padding: 0.3rem 0.8rem;
-    background: var(--accent-color);
-    color: var(--bg-color);
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
 /* 关于我页面样式 */

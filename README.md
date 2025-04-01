@@ -1,45 +1,80 @@
-# 个人作品集网站
+# QUWU STUDIO Portfolio Website
 
-这是一个使用HTML、CSS和JavaScript构建的个人作品集网站。
+A modern, responsive portfolio website showcasing innovative design projects and team expertise in industrial design, human factors engineering, and digital innovation.
 
-## 功能特点
+## Features
 
-- 响应式设计，适配各种设备
-- 现代化的UI界面
-- 平滑滚动效果
-- 动态加载项目展示
-- 社交媒体链接
+- **Modern Design**: Clean and minimalist interface with smooth animations and transitions
+- **Responsive Layout**: Fully responsive design that works seamlessly across all devices
+- **Project Showcase**: Detailed project pages with comprehensive information about each initiative
+- **Team Profiles**: Professional team member presentations with expertise and achievements
+- **Particle Animation**: Interactive background with customizable particle effects
+- **Optimized Performance**: Implemented image preloading and loading indicators for better user experience
 
-## 目录结构
+## Technology Stack
 
-```
-.
-├── index.html          # 主页面
-├── css/               # 样式文件
-│   └── style.css
-├── js/                # JavaScript文件
-│   └── main.js
-├── images/            # 图片资源
-└── README.md          # 项目说明文档
-```
+- HTML5
+- CSS3 (Custom properties, Grid, Flexbox)
+- JavaScript (ES6+)
+- Particles.js for background animation
+- Google Fonts (Space Grotesk, Syncopate, Noto Sans SC)
+- Font Awesome for icons
 
-## 使用说明
+## Projects
 
-1. 克隆项目到本地
-2. 在 `images` 目录中添加您的项目图片
-3. 在 `js/main.js` 中更新项目数据
-4. 在 `index.html` 中更新个人信息
-5. 部署到GitHub Pages
+1. **ERGONOVA Project**
+   - Innovative footwear customization solution
+   - Smart data collection and 3D printing technology
+   - Cloud-based data management system
 
-## 自定义
+2. **Smart Manufacturing Platform**
+   - Industrial automation and digital transformation
+   - Real-time monitoring and AI analytics
+   - Sustainable manufacturing solutions
 
-- 修改 `css/style.css` 中的颜色和样式
-- 在 `js/main.js` 中添加更多交互效果
-- 在 `index.html` 中添加新的内容区块
+3. **Healthcare Innovation Hub**
+   - Advanced medical technology integration
+   - AI-powered diagnostics
+   - Telemedicine platform development
 
-## 部署
+4. **Sustainable Design Initiative**
+   - Eco-friendly product development
+   - Circular economy principles
+   - Life cycle analysis implementation
 
-1. 将代码推送到GitHub仓库
-2. 在仓库设置中启用GitHub Pages
-3. 选择分支和目录
-4. 访问生成的网站地址
+## Team
+
+- **Wu Fan**
+  - Ph.D. Candidate in Design Art
+  - Expertise in Ergonomic Data Application and Generative Design
+  - Multiple authorized invention patents
+
+- **Qu Xiangyu**
+  - Ph.D. Candidate in Industrial Design
+  - Expertise in Human-Computer Interaction and UX Design
+  - International design research background
+
+## Setup and Installation
+
+1. Clone the repository
+2. Open index.html in a modern web browser
+3. No additional setup required as this is a static website
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+We welcome contributions to improve the website. Please feel free to submit issues and pull requests.
+
+## License
+
+© 2024 QUWU STUDIO. All rights reserved.
+
+---
+
+For more information, please visit our website or contact us through the provided channels.

@@ -1,105 +1,119 @@
-.project-detail {
-    max-width: 1200px;
-    margin: 80px auto 40px;
-    padding: 0 20px;
+.project-detail-container {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: calc(100vh - 200px);
+}
+
+.project-image-section {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.project-main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-content {
+    padding: 0 2rem;
 }
 
 .project-header {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 40px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 3rem;
 }
 
 .project-header h1 {
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .chinese-name {
     font-family: 'Noto Sans SC', sans-serif;
-    font-weight: 300;
-    margin-left: 15px;
-    font-size: 2rem;
+    margin-left: 1rem;
+    font-weight: 500;
 }
 
 .project-subtitle {
     font-size: 1.2rem;
-    color: var(--text-color-secondary);
-    font-weight: 300;
+    color: #888;
+    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .project-section {
-    margin-bottom: 60px;
+    margin-bottom: 3rem;
 }
 
 .project-section h2 {
-    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
     font-size: 1.8rem;
-    margin-bottom: 30px;
-    color: var(--text-color);
-    border-left: 4px solid var(--accent-color);
-    padding-left: 15px;
-}
-
-.project-section p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-color-secondary);
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
+    font-family: 'Noto Sans SC', sans-serif;
 }
 
 .tech-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    gap: 2rem;
 }
 
 .feature {
     background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 10px;
+    padding: 2rem;
+    border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
 .feature:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
 }
 
 .feature h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
     font-family: 'Noto Sans SC', sans-serif;
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    color: var(--accent-color);
 }
 
 .feature p {
-    font-size: 1rem;
+    color: #aaa;
     line-height: 1.6;
-    margin: 0;
+    font-family: 'Noto Sans SC', sans-serif;
+}
+
+@media (max-width: 1200px) {
+    .project-detail-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-image-section {
+        position: relative;
+        top: 0;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .project-content {
+        padding: 0;
+    }
 }
 
 @media (max-width: 768px) {
+    .project-detail-container {
+        padding: 1rem;
+    }
+
+    .tech-features {
+        grid-template-columns: 1fr;
+    }
+
     .project-header h1 {
         font-size: 2rem;
-    }
-
-    .chinese-name {
-        font-size: 1.6rem;
-        display: block;
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    .project-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .feature {
-        padding: 20px;
     }
 } 

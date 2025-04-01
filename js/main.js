@@ -1,83 +1,78 @@
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', () => {
-    // 立即隐藏加载指示器
-    const loadingOverlay = document.querySelector('.loading-overlay');
-    loadingOverlay.classList.add('hidden');
+    // 要加载的图片列表
+    const imagesToLoad = [
+        'images/background.gif',
+        'images/logo.png',
+        'images/profile.webp',
+        'images/profile2.webp',
+        'images/project1.webp',
+        'images/project2.webp',
+        'images/project3.webp'
+    ];
 
-    // 初始化粒子动画
-    particlesJS('particles-js', {
-        particles: {
-            number: {
-                value: 250,
-                density: {
-                    enable: true,
-                    value_area: 800
-                }
-            },
-            color: {
-                value: '#ffffff'
-            },
-            shape: {
-                type: 'circle'
-            },
-            opacity: {
-                value: 0.3,
-                random: true,
-                anim: {
-                    enable: true,
-                    speed: 0.5,
-                    opacity_min: 0.1,
-                    sync: false
-                }
-            },
-            size: {
-                value: 2,
-                random: true,
-                anim: {
-                    enable: true,
-                    speed: 1,
-                    size_min: 0.5,
-                    sync: false
-                }
-            },
-            line_linked: {
-                enable: false
-            },
-            move: {
-                enable: true,
-                speed: 1,
-                direction: 'none',
-                random: true,
-                straight: false,
-                out_mode: 'out',
-                bounce: false,
-                attract: {
-                    enable: true,
-                    rotateX: 600,
-                    rotateY: 1200
+    let loadedImages = 0;
+    const totalImages = imagesToLoad.length;
+    const loadingOverlay = document.querySelector('.loading-overlay');
+
+    // 预加载所有图片
+    imagesToLoad.forEach(src => {
+        const img = new Image();
+        img.onload = () => {
+            loadedImages++;
+            if (loadedImages === totalImages) {
+                // 所有图片加载完成后
+                if (loadingOverlay) {
+                    loadingOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                        // 初始化项目展示
+                        loadProjects();
+                        // 初始化粒子动画
+                        initParticles();
+                    }, 500);
                 }
             }
-        },
-        interactivity: {
-            detect_on: 'window',
-            events: {
-                onhover: {
-                    enable: true,
-                    mode: 'repulse'
-                },
-                onclick: {
-                    enable: false
-                },
-                resize: true
-            },
-            modes: {
-                repulse: {
-                    distance: 100,
-                    duration: 0.4
-                }
+        };
+        img.onerror = () => {
+            console.error('Error loading image:', src);
+            loadedImages++;
+        };
+        img.src = src;
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
             }
-        },
-        retina_detect: true
+        });
+    });
+
+    // 监听滚动事件
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // 添加淡入效果
+        document.querySelectorAll('.fade-in').forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            const isVisible = elementTop < window.innerHeight && elementBottom >= 0;
+            
+            if (isVisible) {
+                element.classList.add('visible');
+            }
+        });
     });
 
     // 视频加载和播放控制
@@ -112,28 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
         img.onload = () => profileImage.classList.add('loaded');
     }
 
-    // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // 导航栏滚动效果
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
-        } else {
-            navbar.style.background = 'rgba(0, 0, 0, 0.7)';
-            navbar.style.backdropFilter = 'blur(5px)';
-        }
-    });
-
     // 加载项目
     loadProjects();
 
@@ -160,21 +133,21 @@ const projects = [
         title: "Smart Manufacturing Platform",
         description: "Revolutionizing industrial processes through IoT and AI integration",
         category: "Industrial Innovation",
-        image: "project1.jpg",
+        image: "project1.webp",
         link: "project-1.html"
     },
     {
         title: "Healthcare Innovation Hub",
         description: "Advanced medical solutions powered by cutting-edge technology",
         category: "Healthcare",
-        image: "project2.jpg",
+        image: "project2.webp",
         link: "project-2.html"
     },
     {
         title: "Sustainable Design Initiative",
         description: "Eco-friendly innovation for a better future",
         category: "Sustainability",
-        image: "project3.jpg",
+        image: "project3.webp",
         link: "project-3.html"
     }
 ];
@@ -190,7 +163,7 @@ function loadProjects() {
         
         card.innerHTML = `
             <a href="${project.link}" style="text-decoration: none; color: inherit;">
-                <img src="images/${project.image}" alt="${project.title}">
+                <img src="images/${project.image}" alt="${project.title}" class="project-image">
                 <div class="project-card-content">
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
@@ -206,4 +179,86 @@ function loadProjects() {
             card.classList.add('visible');
         }, 100);
     });
+}
+
+// 初始化粒子动画
+function initParticles() {
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#ffffff'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.3,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'bubble'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    bubble: {
+                        distance: 100,
+                        size: 4,
+                        duration: 2,
+                        opacity: 0.8,
+                        speed: 3
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    }
 }
