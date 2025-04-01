@@ -155,4 +155,4 @@ function loadProjects() {
         `;
         projectGrid.appendChild(projectCard);
     });
-} 
+}
