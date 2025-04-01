@@ -1,6 +1,6 @@
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', () => {
-    // 立即隐藏加载指示器并显示背景
+    // 立即隐藏加载指示器
     const loadingOverlay = document.querySelector('.loading-overlay');
     loadingOverlay.classList.add('hidden');
 
@@ -36,29 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 内容渐入效果
-    const elements = document.querySelectorAll('.project-card, .about-content');
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-
-    // 监听滚动以触发渐入效果
-    window.addEventListener('scroll', () => {
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight * 0.8) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    });
-
     // 加载项目
     loadProjects();
+
+    // 监听滚动以触发项目卡片动画
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    // 观察所有项目卡片
+    document.querySelectorAll('.project-card').forEach(card => {
+        observer.observe(card);
+    });
 });
 
 // 示例项目数据
@@ -88,6 +83,8 @@ function loadProjects() {
     const projectGrid = document.querySelector('.project-grid');
     if (!projectGrid) return;
 
+    projectGrid.innerHTML = ''; // 清空现有内容
+
     projects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
@@ -101,4 +98,13 @@ function loadProjects() {
         `;
         projectGrid.appendChild(projectCard);
     });
+
+    // 添加渐入动画
+    setTimeout(() => {
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 200);
+        });
+    }, 100);
 }
