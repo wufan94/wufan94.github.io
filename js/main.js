@@ -67,26 +67,21 @@ window.addEventListener('scroll', () => {
 
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', () => {
-    // 立即隐藏加载指示器
+    // 立即隐藏加载指示器并显示背景
     const loadingOverlay = document.querySelector('.loading-overlay');
+    const heroOverlay = document.querySelector('.hero-overlay');
     loadingOverlay.classList.add('hidden');
+    heroOverlay.classList.add('loaded');
 
-    // 延迟加载图片
-    setTimeout(() => {
-        // 加载背景图
-        const heroOverlay = document.querySelector('.hero-overlay');
-        heroOverlay.classList.add('loaded');
-
-        // 加载个人照片
-        const profileImage = document.querySelector('.profile-image');
-        const img = profileImage.querySelector('img');
-        
-        if (img.complete) {
-            profileImage.classList.add('loaded');
-        } else {
-            img.onload = () => profileImage.classList.add('loaded');
-        }
-    }, 100);
+    // 加载个人照片
+    const profileImage = document.querySelector('.profile-image');
+    const img = profileImage.querySelector('img');
+    
+    if (img.complete) {
+        profileImage.classList.add('loaded');
+    } else {
+        img.onload = () => profileImage.classList.add('loaded');
+    }
 
     // 平滑滚动
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -108,12 +103,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 内容渐入效果
     const elements = document.querySelectorAll('.project-card, .about-content');
     elements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
+
+    // 加载项目
+    loadProjects();
 });
 
 // 示例项目数据
@@ -127,7 +126,7 @@ const projects = [
     {
         title: '3D Printed Footwear Design',
         description: 'Revolutionary footwear design project leveraging 3D printing technology to create customized, ergonomic shoes. The process integrates personalized foot scan data with parametric design algorithms to produce comfortable, stylish, and perfectly fitted footwear.',
-        image: 'images/project2.jpg',
+        image: 'images/project2.png',
         category: 'Design'
     },
     {
@@ -156,9 +155,4 @@ function loadProjects() {
         `;
         projectGrid.appendChild(projectCard);
     });
-}
-
-// 页面加载完成后执行
-document.addEventListener('DOMContentLoaded', () => {
-    loadProjects();
-}); 
+} 
