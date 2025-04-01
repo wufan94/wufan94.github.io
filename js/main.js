@@ -157,6 +157,9 @@ function loadProjects() {
     const projectGrid = document.querySelector('.project-grid');
     if (!projectGrid) return;
 
+    // 清空现有内容，防止重复
+    projectGrid.innerHTML = '';
+
     projects.forEach(project => {
         const card = document.createElement('div');
         card.className = 'project-card';
