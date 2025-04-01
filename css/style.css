@@ -525,4 +525,21 @@ footer p {
     z-index: 1;
     pointer-events: none;
     background-color: transparent;
+}
+
+.team-member img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.team-member:nth-child(2) img {
+    height: 320px; /* 比第一个设计师照片缩小20% */
+}
+
+.team-member:hover img {
+    transform: scale(1.05);
 } 
